@@ -16,7 +16,7 @@ namespace project_1.test
         static StoreLevelPrograms storeLevelPrograms = new StoreLevelPrograms(repo);
 
 
-        [Fact]
+        /*[Fact]
         public void CheckOutTotalTest()
         {
             //var options = new DbContextOptionsBuilder<StoreAppContext>().UseInMemoryDatabase(databaseName: "TestDb").Options;
@@ -44,7 +44,7 @@ namespace project_1.test
          //   }
 
 
-        }
+        }*/
 
         [Fact]//the name of the function should tell the user what the function is doing
         public void CreateCustomerSavesANewPlayerToTheDb()
