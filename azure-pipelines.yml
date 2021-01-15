@@ -21,13 +21,6 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'dragon'
-    organization: 'batch12142020'
-    scannerMode: 'MSBuild'
-    projectKey: 'DanielGeiser_project-1'
-    projectName: 'project 1'
 
 - task: SonarCloudPrepare@1
   inputs:
@@ -35,7 +28,7 @@ steps:
     organization: 'batch12142020'
     scannerMode: 'MSBuild'
     projectKey: 'DanielGeiser_project-1'
-    projectName: 'project 1''
+    projectName: 'project 1'
 
 - task: DotNetCoreCLI@2
   inputs:
