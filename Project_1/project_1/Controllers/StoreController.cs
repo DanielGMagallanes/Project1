@@ -35,7 +35,7 @@ namespace project_1.Controllers
         }
 
 
-        // GET: StoreController/Create
+        /*// GET: StoreController/Create
         [Authorize]
         public ActionResult CreateProduct()
         {
@@ -100,6 +100,6 @@ namespace project_1.Controllers
             {
                 return View();
             }
-        }
+        }*/
     }
 }
