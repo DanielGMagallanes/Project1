@@ -29,6 +29,14 @@ steps:
     projectKey: 'DanielGeiser_project-1'
     projectName: 'project 1'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'batch12142020'
+    organization: 'batch12142020'
+    scannerMode: 'MSBuild'
+    projectKey: 'DanielGeiser_project-1'
+    projectName: 'project 1''
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
