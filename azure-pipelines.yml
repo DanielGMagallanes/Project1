@@ -21,6 +21,13 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'dragon'
+    organization: 'danielgeiser1987'
+    scannerMode: 'MSBuild'
+    projectKey: 'DanielGeiser_project-1'
+    projectName: 'project 1'
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
