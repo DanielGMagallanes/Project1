@@ -24,8 +24,8 @@ steps:
 
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'batch12142020'
-    organization: 'batch12142020'
+    SonarCloud: 'dragon'
+    organization: 'danielgeiser1987'
     scannerMode: 'MSBuild'
     projectKey: 'DanielGeiser_project-1'
     projectName: 'project 1'
