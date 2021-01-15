@@ -39,3 +39,6 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: SonarCloudAnalyze@1
+  displayName: publish code analysis
