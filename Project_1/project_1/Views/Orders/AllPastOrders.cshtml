@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ModelLayer.ViewModels.OrderViewModel>
+
+@{
+    ViewData["Title"] = "AllPastOrders";
+}
+
+<h1>AllPastOrders</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.orderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                <a asp-controller="Orders" asp-action="FullOrderDetails" asp-route-id="@item.orderID">Full Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

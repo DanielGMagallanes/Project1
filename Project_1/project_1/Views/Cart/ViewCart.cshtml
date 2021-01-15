@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ModelLayer.Cart>
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+@{
+    ViewData["Title"] = "ViewCart";
+}
+
+<h1>ViewCart</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.the_store_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customerGuild)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.the_store_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customerGuild)
+                </td>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "IsAdmin")).Succeeded)
+                {
+                    <td>
+                        @Html.ActionLink("EditProduct", "EditProduct", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("DeleteProduct", "DeleteProduct", new { /* id=item.PrimaryKey */ })
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a></a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+@await Html.PartialAsync("CheckoutTotal", (double)ViewBag.total)
+
+
+<a asp-controller="Cart" asp-action="CheckOutCart" asp-route-id="@Model.ElementAt(0).the_store_id">Check Out</a>

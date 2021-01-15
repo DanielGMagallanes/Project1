@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ModelLayer.Store>
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@{
+    ViewData["Title"] = "MainPageStoreVIewModel";
+}
+
+<h1>MainPageStoreVIewModel</h1>
+@if ((await AuthorizationService.AuthorizeAsync(User, "IsAdmin")).Succeeded)
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.storeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalSales)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.storeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalSales)
+                </td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td>
+                        <a asp-controller="Store" asp-action="GetStoreInvertory" asp-route-id="@item.Id">Select</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a onclick="alert('Login to go to @item.storeName')">Select</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

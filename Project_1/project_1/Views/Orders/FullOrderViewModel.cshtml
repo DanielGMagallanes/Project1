@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ModelLayer.ViewModels.FullOrderViewModel>
+
+@{
+    ViewData["Title"] = "FullOrderViewModel";
+}
+
+<h1>FullOrderViewModel</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.dateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.storeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pricePaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.qtyOrdered)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.storeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pricePaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.qtyOrdered)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("OrderTotal",(double)ViewBag.total)
